@@ -125,7 +125,7 @@ if __name__ == "__main__":
     maxUrls = 0
     if len(argv) > 1: 
         url = argv[1]
-        maxUrls = argv[2]
+        maxUrls = int(argv[2])
     else: 
         url = input("Enter the base URL: ")
         while 1:

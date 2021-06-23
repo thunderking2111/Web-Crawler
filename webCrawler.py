@@ -17,6 +17,16 @@ RED = Fore.RED
 int_links = set()
 ext_links = set()
 
+#Input stream clearing
+def flush_input():
+    try:
+        import msvcrt
+        while msvcrt.kbhit():
+            msvcrt.getch()
+    except ImportError:
+        import sys, termios    #for linux/unix
+        termios.tcflush(sys.stdin, termios.TCIOFLUSH)
+
 #Converting URL into a valid form and checking for redirections
 def urlValidator(url):
     parsed = urlparse(url)
@@ -154,4 +164,6 @@ if __name__ == "__main__":
     print('[*]Total Internal Links:', len(int_links))
     print('[*]Total External Links:', len(ext_links))
     print()
+    
+    flush_input()
     input('Enter any key to Exit...')
